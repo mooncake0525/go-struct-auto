@@ -90,7 +90,8 @@ func main(){
 	table := Dbtabels{}
 	for rows.Next(){
 		err := rows.Scan(&table.Name)
-		fmt.Println("正在生成表结构：",ToCamel(table.Name))
+		tableName:=ToCamel(table.Name)
+		fmt.Println("正在生成表结构：",tableName)
 		if err != nil {
 			fmt.Printf("Scan failed,err:%v", err)
 			return
@@ -106,7 +107,7 @@ func main(){
 				cloumns.Close() //可以关闭掉未scan连接一直占用
 			}
 		}()
-		struct_str :=fmt.Sprintf("type %s struct { \n",strFirstToUpper(table.Name))
+		struct_str :=fmt.Sprintf("type %s struct { \n",tableName)
 		column := Column{}
 		for cloumns.Next(){
 			err := cloumns.Scan(&column.Columname,&column.Datatype,&column.Columncomment,&column.Columnkey,&column.Extra)
@@ -139,7 +140,7 @@ func main(){
 		model_head := "package models \n\n"
 		//导出文件
 		body := model_head+struct_str
-		filename:=fmt.Sprintf("%s/%s.go",path,table.Name)
+		filename:=fmt.Sprintf("%s/%s.go",path,tableName)
 		//创建文件夹
 		error2 := os.MkdirAll(path, os.ModePerm)
 		if error2 != nil{
