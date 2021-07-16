@@ -90,7 +90,7 @@ func main(){
 	table := Dbtabels{}
 	for rows.Next(){
 		err := rows.Scan(&table.Name)
-		fmt.Println("正在生成表结构：",table.Name)
+		fmt.Println("正在生成表结构：",ToCamel(table.Name))
 		if err != nil {
 			fmt.Printf("Scan failed,err:%v", err)
 			return
@@ -117,15 +117,9 @@ func main(){
 				return
 			}
 
-			columnName := column.Columname
-			columnWords := strings.Split(columnName, "_")
-			columnWordsUpper := make([]string, 0)
-			for i := range columnWords {
-				columnWordsUpper = append(columnWordsUpper, strFirstToUpper(columnWords[i]))
-			}
-			fieldName := strings.Join(columnWordsUpper, "")
+			columnName := ToCamel(column.Columname)
 
-			struct_str += "    "+fieldName
+			struct_str += "    "+columnName
 			if column.Datatype == "int" || column.Datatype =="tinyint"{
 				struct_str +=" int "
 			}else if column.Datatype == "decimal"{
@@ -158,6 +152,15 @@ func main(){
 	}
 
 	fmt.Println("End  SUCCESS")
+}
+
+func ToCamel(columnName string)string{
+	columnWords := strings.Split(columnName, "_")
+	columnWordsUpper := make([]string, 0)
+	for i := range columnWords {
+		columnWordsUpper = append(columnWordsUpper, strFirstToUpper(columnWords[i]))
+	}
+	return strings.Join(columnWordsUpper, "")
 }
 
 //首字母大写
