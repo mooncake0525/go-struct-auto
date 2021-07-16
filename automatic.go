@@ -116,7 +116,16 @@ func main(){
 				fmt.Printf("Scan failed,err:%v", err)
 				return
 			}
-			struct_str += "    "+strFirstToUpper(column.Columname)
+
+			columnName := column.Columname
+			columnWords := strings.Split(columnName, "_")
+			columnWordsUpper := make([]string, 0)
+			for i := range columnWords {
+				columnWordsUpper = append(columnWordsUpper, strFirstToUpper(columnWords[i]))
+			}
+			fieldName := strings.Join(columnWordsUpper, "")
+
+			struct_str += "    "+fieldName
 			if column.Datatype == "int" || column.Datatype =="tinyint"{
 				struct_str +=" int "
 			}else if column.Datatype == "decimal"{
