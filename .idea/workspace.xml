@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d257372e-83ca-4ccb-9cc9-0a990c180646" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/c.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/automatic.go" beforeDir="false" afterPath="$PROJECT_DIR$/automatic.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mall_account.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/order_channel.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/order_channel_state.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/order_payment.go" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>tables</find>
-    </findStrings>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
